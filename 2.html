@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style type="text/css">
+    .header-img {
+      margin: 0 auto;
+      width: 100%;
+      min-width: 1200px;
+      position: relative;
+    }
+
+    .footer-img {
+      margin: 0 auto;
+      width: 100%;
+      min-width: 1200px;
+      position: relative;
+    }
+
+    .text-img {
+      height: 68px;
+      line-height: 68px;
+      margin: 60px auto 0;
+      display: block;
+      font-size: 38px;
+      font-weight: 700;
+      text-align: center;
+      background-image: url('img/10037.png');
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    .link-box {
+      text-align: center;
+      margin-top: 35px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .link-box a {
+      color: #6b6b6b;
+      width: 205px;
+      height: 45px;
+      line-height: 45px;
+      font-weight: 700;
+      border-top: 1px solid #cfe6ca;
+      border-bottom: 1px solid #cfe6ca;
+      -webkit-transition: all .6s ease;
+      -moz-transition: all .6s ease;
+      -ms-transition: all .6s ease;
+      transition: all .6s ease;
+      display: inline-block;
+      *display: inline;
+      *zoom: 1;
+      position: relative;
+      font-size: 14px;
+      text-decoration:none
+    }
+
+    .link-box a:hover,
+    .link-box a.active {
+      background-image: url('img/10038.png');
+      background-repeat: no-repeat;
+      background-position: center;
+      color: #fff;
+    }
+
+    /* 设置外层容器的样式 */
+    .container-1 {
+      width: 100%;
+      height: 150px;
+      background-color: #ffffff;
+    }
+
+    /* 设置内层容器的样式 */
+    .container-2 {
+      width: 1030px;
+      height: 83px;
+      margin: 42px auto 43px auto;
+      display: flex;
+      padding-right: 20px;
+      position: relative;
+    }
+
+    /* 设置图片的样式 */
+    .image {
+      width: 68px;
+      height: 28px;
+      margin-left: 0;
+    }
+
+    /* 设置公告文本的样式 */
+    .notice {
+      position: absolute;
+      font-size: 16px;
+      color: white;
+      padding: 0 15px;
+    }
+
+    .notice-text {
+      font-size: 20px;
+      color: black;
+      margin-left: 50px;
+    }
+
+    .date {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 33.34px;
+      height: 24px;
+      margin-top: 13px;
+      margin-right: 30px;
+      font-size: 12px;
+      color: #999;
+      text-align: center;
+      line-height: 24px;
+    }
+
+    .more-info {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 36.45px;
+      height: 24px;
+      margin-bottom: 13px;
+      margin-right: 30px;
+      font-size: 12px;
+      color: #28bd09;
+      text-align: center;
+      line-height: 24px;
+      border: 0px solid #28bd09;
+      cursor: pointer;
+      border-radius: 2px;
+    }
+
+    .notice-content {
+      width: 830px;
+      height: 44px;
+      margin-top: 20px;
+      font-size: 12px;
+      color: #635f58;
+    }
+
+    hr {
+      border-style: dashed;
+      border-color: #999;
+      border-spacing: 2px;
+      width: 1050px;
+      margin: 0 auto;
+    }
+    .wrapper {
+      width: 100%;
+      height: 28px;
+      margin-bottom: 70px;
+      margin-top: 52px;
+      text-align: center;
+    }
+    .links {
+      display: inline-flex;
+    }
+    
+    .link {
+      width: 27.05px;
+      height: 24px;
+      line-height: 26px;
+      text-align: center;
+      color: #bbbbbb;
+      font-size: 12px;
+      cursor: pointer;
+    }
+    .link.active {
+      color: #333;
+      font-weight: bold;
+    }
+    .next-page {
+      display: inline-block;
+      width: 56px;
+      height: 24px;
+      font-size: 12px;
+      border: 1px solid silver;
+      text-align: center;
+      line-height: 24px;
+    }
+    .next-page:not(:last-child) {
+      margin-right: 10px;
+    }
+    .next-page--small {
+      width: 46px;
+      margin-left: 10px;
+    }
+    .current-page {
+      font-size: 12px;
+      color: #3c3c3c;
+      margin-top: 5px;
+    }
+    .link:first-child {
+      margin-right: 10px;
+    }
+    .link:hover, .next-page:hover{
+      background-color: #3c3c3c;
+      color:#fff
+    }
+    .page {
+        display: none;
+      }
+      .active {
+        display: block;
+        
+      }
+       
+      
+  </style>
+</head>
+<script src="js/jquery-3.6.0.js"></script>
+
+<body>
+  <img src="img/10011.jpg" alt="Header Image" class="header-img">
+  <div class="text-img"></div>
+  <div class="link-box">
+    <a href="#" onclick="showPage(1)">最新</a>
+    <a href="#" onclick="showPage(2)">热点</a>
+    <a href="#" onclick="showPage(3)">新闻</a>
+    <a href="#" onclick="showPage(4)">公告</a>
+    <a href="#" onclick="showPage(5)">活动</a>
+  </div>
+
+
+  <script>
+    // 获取所有超链接
+    const links = document.querySelectorAll('.link-box a');
+    // 给每个超链接绑定点击事件
+    links.forEach(link => {
+      link.addEventListener('click', function () {
+        // 将当前被点击的超链接设置为active状态
+        links.forEach(link => link.classList.remove('active'));
+        this.classList.add('active');
+      });
+    });
+  </script>
+  <div id="page1" class="page active">
+  <!-- 外层容器 -->
+  <div class="container-1">
+    <!-- 内层容器 -->
+    <div class="container-2">
+      <!-- 图片 -->
+      <img class="image" src="img/10038.png" alt="图片">
+      <!-- 公告文本 -->
+      <span class="notice">公告</span>
+      <div class="notice-text">
+        <span>关于游戏内作弊等违规行为的处罚公告</span>
+        <div class="notice-content">
+          <span>为确保广大用户的游戏体验，打造公平健康的游戏环境，《我的世界》一直致力于打击作弊等违规行为，对于任何不公平游戏行为零容忍。希望大家能够遵守游戏规则，共同维护绿色的游戏环境，抵制所有第三方违规工具。</span>
+        </div>
+      </div>
+      <div class="date">03-13</div>
+      <div class="more-info">>详情</div>
+    </div>
+  </div>
+  <hr>
+  <!-- 外层容器 -->
+  <div class="container-1">
+    <!-- 内层容器 -->
+    <div class="container-2">
+      <!-- 图片 -->
+      <img class="image" src="img/10038.png" alt="图片">
+      <!-- 公告文本 -->
+      <span class="notice">公告</span>
+      <div class="notice-text">
+        <span>《我的世界》资源中心功能优化公告</span>
+        <div class="notice-content">
+          <span>亲爱的冒险家，一直以来，资源中心是开发者依靠作品与冒险家交流的地方，在这里您可以找到匠心独具的游戏地图，美轮美奂的材质光影，或是别出心裁的功能玩法，这都是开发者们创意的结晶。您可以给优秀的作品送上好评，还可以用自己的钻石支持他们。</span>
+        </div>
+      </div>
+      <div class="date">03-09</div>
+      <div class="more-info">>详情</div>
+    </div>
+  </div>
+  <hr>
+  <!-- 外层容器 -->
+  <div class="container-1">
+    <!-- 内层容器 -->
+    <div class="container-2">
+      <!-- 图片 -->
+      <img class="image" src="img/10038.png" alt="图片">
+      <!-- 公告文本 -->
+      <span class="notice">公告</span>
+      <div class="notice-text">
+        <span>校园内传出神秘旋律？快来方块世界一探究竟！</span>
+        <div class="notice-content">
+          <span>暖洋洋的风带来了春天也带来了同学们的欢声笑语美好的校园季如期而至冒险家们准备好体验精彩校园生活了吗？今天小官微为我们带来了有趣的方块校园季玩法带大家体验别样精彩校园时光快来一起看看吧~旅行笔记作者：红石粉春天生命的萌动、冬日银装素裹的晶莹......热爱旅行的冒险家们，是否也想将自己的旅程记录下来呢？</span>
+        </div>
+      </div>
+      <div class="date">03-05</div>
+      <div class="more-info">>详情</div>
+    </div>
+  </div>
+  <hr>
+  <!-- 外层容器 -->
+  <div class="container-1">
+    <!-- 内层容器 -->
+    <div class="container-2">
+      <!-- 图片 -->
+      <img class="image" src="img/10038.png" alt="图片">
+      <!-- 公告文本 -->
+      <span class="notice">公告</span>
+      <div class="notice-text">
+        <span>神秘星球发现生命迹象？这一切究竟是巧合还是......</span>
+        <div class="notice-content">
+          <span>浩瀚无垠的宇宙隐藏着无限的奥秘夜晚每一颗闪烁着的星星都可能孕育着不同的文明黑暗的森林当中我们又该如何去探索未知呢？今天小官微和小伙伴就来到了组件【大飞鱼号_鱼星漂流】的世界探索要是有一位经验丰富的伙伴同行就好了别担心！</span>
+        </div>
+      </div>
+      <div class="date">03-02</div>
+      <div class="more-info">>详情</div>
+    </div>
+  </div>
+  <hr>
+  <!-- 外层容器 -->
+  <div class="container-1">
+    <!-- 内层容器 -->
+    <div class="container-2">
+      <!-- 图片 -->
+      <img class="image" src="img/10038.png" alt="图片">
+      <!-- 公告文本 -->
+      <span class="notice">公告</span>
+      <div class="notice-text">
+        <span>关于游戏内作弊等违规行为的处罚公告</span>
+        <div class="notice-content">
+          <span>为确保广大用户的游戏体验，打造公平健康的游戏环境，《我的世界》一直致力于打击作弊等违规行为，对于任何不公平游戏行为零容忍。希望大家能够遵守游戏规则，共同维护绿色的游戏环境，抵制所有第三方违规工具。</span>
+        </div>
+      </div>
+      <div class="date">03-02</div>
+      <div class="more-info">>详情</div>
+    </div>
+  </div>
+  <hr>
+  <!-- 外层容器 -->
+  <div class="container-1">
+    <!-- 内层容器 -->
+    <div class="container-2">
+      <!-- 图片 -->
+      <img class="image" src="img/10038.png" alt="图片">
+      <!-- 公告文本 -->
+      <span class="notice">公告</span>
+      <div class="notice-text">
+        <span>紧急呼叫，史蒂夫即将被外星生物抓走，请求支援！</span>
+        <div class="notice-content">
+          <span>当天马行空的创意遇到方块皮肤会碰撞出怎样的火花？2月24日《我的世界》全新趣味礼包第二弹正式上线两款精美通用皮肤惊艳亮相冒险家们无需购买会员也可使用别出心裁的创意设计颠覆你的想象还有超值首周优惠等待大家快来查看这期礼包内容，一起开启奇幻之旅吧奇遇列车缓缓抵达神秘的外星来客和独角兽骑士踏入方块世界大家是想帮助史蒂夫在外星飞船下惊险逃生还是想成为自带彩虹独角兽坐骑的少年解锁“永不下马”的独特体验？</span>
+        </div>
+      </div>
+      <div class="date">03-01</div>
+      <div class="more-info">>详情</div>
+    </div>
+  </div>
+  <hr>
+</div>
+<div id="page2" class="page active">
+  <!-- 外层容器 -->
+  <div class="container-1">
+    <!-- 内层容器 -->
+    <div class="container-2">
+      <!-- 图片 -->
+      <img class="image" src="img/10038.png" alt="图片">
+      <!-- 公告文本 -->
+      <span class="notice">公告</span>
+      <div class="notice-text">
+        <span>校园内传出神秘旋律？快来方块世界一探究竟！</span>
+        <div class="notice-content">
+          <span>暖洋洋的风带来了春天也带来了同学们的欢声笑语美好的校园季如期而至冒险家们准备好体验精彩校园生活了吗？今天小官微为我们带来了有趣的方块校园季玩法带大家体验别样精彩校园时光快来一起看看吧~旅行笔记作者：红石粉春天生命的萌动、冬日银装素裹的晶莹......热爱旅行的冒险家们，是否也想将自己的旅程记录下来呢？</span>
+        </div>
+      </div>
+      <div class="date">03-05</div>
+      <div class="more-info">>详情</div>
+    </div>
+  </div>
+  <hr>
+  <!-- 外层容器 -->
+  <div class="container-1">
+    <!-- 内层容器 -->
+    <div class="container-2">
+      <!-- 图片 -->
+      <img class="image" src="img/10038.png" alt="图片">
+      <!-- 公告文本 -->
+      <span class="notice">公告</span>
+      <div class="notice-text">
+        <span>神秘星球发现生命迹象？这一切究竟是巧合还是......</span>
+        <div class="notice-content">
+          <span>浩瀚无垠的宇宙隐藏着无限的奥秘夜晚每一颗闪烁着的星星都可能孕育着不同的文明黑暗的森林当中我们又该如何去探索未知呢？今天小官微和小伙伴就来到了组件【大飞鱼号_鱼星漂流】的世界探索要是有一位经验丰富的伙伴同行就好了别担心！</span>
+        </div>
+      </div>
+      <div class="date">03-02</div>
+      <div class="more-info">>详情</div>
+    </div>
+  </div>
+  <hr>
+  <!-- 外层容器 -->
+  <div class="container-1">
+    <!-- 内层容器 -->
+    <div class="container-2">
+      <!-- 图片 -->
+      <img class="image" src="img/10038.png" alt="图片">
+      <!-- 公告文本 -->
+      <span class="notice">公告</span>
+      <div class="notice-text">
+        <span>紧急呼叫，史蒂夫即将被外星生物抓走，请求支援！</span>
+        <div class="notice-content">
+          <span>当天马行空的创意遇到方块皮肤会碰撞出怎样的火花？2月24日《我的世界》全新趣味礼包第二弹正式上线两款精美通用皮肤惊艳亮相冒险家们无需购买会员也可使用别出心裁的创意设计颠覆你的想象还有超值首周优惠等待大家快来查看这期礼包内容，一起开启奇幻之旅吧奇遇列车缓缓抵达神秘的外星来客和独角兽骑士踏入方块世界大家是想帮助史蒂夫在外星飞船下惊险逃生还是想成为自带彩虹独角兽坐骑的少年解锁“永不下马”的独特体验？</span>
+        </div>
+      </div>
+      <div class="date">03-01</div>
+      <div class="more-info">>详情</div>
+    </div>
+  </div>
+  <hr>
+  <!-- 外层容器 -->
+  <div class="container-1">
+    <!-- 内层容器 -->
+    <div class="container-2">
+      <!-- 图片 -->
+      <img class="image" src="img/10038.png" alt="图片">
+      <!-- 公告文本 -->
+      <span class="notice">公告</span>
+      <div class="notice-text">
+        <span>爬山小技巧+1！</span>
+        <div class="notice-content">
+          <span>这几日，小伙伴经常在方块世界中翻山越岭去更远的地方冒险在探险的旅途中小伙伴遇到了许多新奇有趣的事但与此同时，他也面临着一些困难想要跨越的山太高啦对我来说难度太大了！有没有什么工具可以帮助我们更加高效地登山呢？</span>
+        </div>
+      </div>
+      <div class="date">02-23</div>
+      <div class="more-info">>详情</div>
+    </div>
+  </div>
+  <hr>
+  <!-- 外层容器 -->
+  <div class="container-1">
+    <!-- 内层容器 -->
+    <div class="container-2">
+      <!-- 图片 -->
+      <img class="image" src="img/10038.png" alt="图片">
+      <!-- 公告文本 -->
+      <span class="notice">公告</span>
+      <div class="notice-text">
+        <span>女巫的终极预言？看小伙伴如何扭转乾坤！</span>
+        <div class="notice-content">
+          <span>沼泽深处的女巫预言：不久之后将会有一场灾难降临城市高楼化作废墟，烟尘四起深海呼啸着掀起了惊天巨浪神秘病毒和灾变生物肆虐着方块世界那我可要提前做好准备！小伙伴特地前往下界拜访猪灵并请教应对末日的对策我们猪灵一族都是使用这款【灾变-末日生存】玩法来模拟末日来临另外这款【AL沙漏跑酷】玩法能大幅提高身法水平相信你会用上的！</span>
+        </div>
+      </div>
+      <div class="date">02-21</div>
+      <div class="more-info">>详情</div>
+    </div>
+  </div>
+  <hr>
+  <!-- 外层容器 -->
+  <div class="container-1">
+    <!-- 内层容器 -->
+    <div class="container-2">
+      <!-- 图片 -->
+      <img class="image" src="img/10038.png" alt="图片">
+      <!-- 公告文本 -->
+      <span class="notice">公告</span>
+      <div class="notice-text">
+        <span>方块世界射箭游乐场今日开张啦！</span>
+        <div class="notice-content">
+          <span>之前小官微为了帮助小伙伴在射箭比赛上战胜射术大师小白专门搭建了一个射术训练场给小伙伴进行射术特训过了这么久，小伙伴训练得怎么样了？我现在对我的射术可是信心满满！</span>
+        </div>
+      </div>
+      <div class="date">02-20</div>
+      <div class="more-info">>详情</div>
+    </div>
+  </div>
+  <hr>
+</div>
+
+<script>
+  function showPage(page) {
+    // 将所有页面隐藏
+    var pages = document.getElementsByClassName("page");
+    for (var i = 0; i < pages.length; i++) {
+      pages[i].classList.remove("active");
+    }
+    $(".link-box>a").css("background","white").css("color","black");
+    $(".link-box>a:nth-child("+page+")").css("background","url('img/10038.png')").css("color","white");
+    // 显示指定页面
+    var pageElement = document.getElementById("page" + page);
+    pageElement.classList.add("active");
+  }
+  $(document).ready(function(){
+    
+    var pages = document.getElementsByClassName("page");
+    for (var i = 0; i < pages.length; i++) {
+      pages[i].classList.remove("active");
+    }
+    
+    $(".link-box>a:first-child").css("background","url('img/10038.png')").css("color","white");
+    
+    var pageElement = document.getElementById("page1");
+    pageElement.classList.add("active");
+    
+     
+  })
+
+</script>
+  <div class="wrapper">
+    <div class="links">
+      <div class="link active">1</div>
+      <div class="link">2</div>
+      <div class="link">3</div>
+      <div class="link">4</div>
+      <div class="link">5</div>
+      <div class="next-page">下一页</div>
+      <div class="next-page">末页</div>
+      <div class="current-page">第1页共822页</div>
+      <div class="next-page next-page--small">1</div>
+      <div class="next-page next-page--small">跳转</div>
+    </div>
+  </div>
+  <img src="img/10021.png" alt="footer Image" class="footer-img">
+</body>
+</html>
